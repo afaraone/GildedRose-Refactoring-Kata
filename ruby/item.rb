@@ -15,6 +15,7 @@ end
 class GeneralItem < Item
   def update_quality
     @quality -= expired? ? 2 : 1
+    @quality = 0 if @quality < 0
     @sell_in -= 1
   end
 
