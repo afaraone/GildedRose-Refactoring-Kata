@@ -41,7 +41,11 @@ class GeneralItem < Item
   end
 end
 
-class AgedBrieItem < Item
+class AgedBrieItem < GeneralItem
+  def update_quality
+    @quality += (expired? ? 2 : 1)
+    correct_value
+  end
 end
 
 class SulfurasItem < Item
