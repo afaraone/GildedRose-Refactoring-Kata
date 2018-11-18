@@ -13,7 +13,7 @@ items = [
   conjured = ConjuredItem.new(name="Conjured Mana Cake", sell_in=3, quality=6)
 ]
 
-describe GildedRose do
+describe 'feature' do
   subject = GildedRose.new(items)
 
   describe 'update after two days' do
