@@ -14,13 +14,14 @@ end
 
 class GeneralItem < Item
   def update_quality
-    unless @sell_in < 0
-      @sell_in -= 1
-      @quality -= 1
-    else
-      @sell_in -= 1
-      @quality -= 2
-    end
+    @quality -= expired? ? 2 : 1
+    @sell_in -= 1
+  end
+
+  private
+
+  def expired?
+    @sell_in < 0
   end
 end
 
