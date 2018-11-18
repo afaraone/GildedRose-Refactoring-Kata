@@ -15,7 +15,7 @@ end
 class GeneralItem < Item
   MIN_QUALITY = 0
   MAX_QUALITY = 50
-  DEGRADE_RATIO = 1
+  RATIO = -1
 
   def update_item
     update_quality
@@ -25,8 +25,12 @@ class GeneralItem < Item
   private
 
   def update_quality
-    @quality -= self.class::DEGRADE_RATIO * (expired? ? 2 : 1)
+    @quality += change_amount
     correct_value
+  end
+
+  def change_amount
+    self.class::RATIO * (expired? ? 2 : 1)
   end
 
   def correct_value
@@ -43,11 +47,11 @@ class GeneralItem < Item
 end
 
 class AgedBrieItem < GeneralItem
-  DEGRADE_RATIO = -1
+  RATIO = 1
 end
 
 class SulfurasItem < GeneralItem
-  DEGRADE_RATIO = 0
+  RATIO = 0
 
   def correct_value
     nil
@@ -55,9 +59,9 @@ class SulfurasItem < GeneralItem
 end
 
 class BackstagePassItem < GeneralItem
-  DEGRADE_RATIO = -1
+  RATIO = 1
 end
 
 class ConjuredItem < GeneralItem
-  DEGRADE_RATIO = 2
+  RATIO = -2
 end

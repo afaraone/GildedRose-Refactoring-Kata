@@ -129,6 +129,8 @@ describe BackstagePassItem do
 
     context 'sell_by is 5-9' do
       it 'quality increases by 2' do
+        less_than_ten.update_item
+        expect(less_than_ten.quality).to eq 32
       end
     end
 
