@@ -57,5 +57,6 @@ end
 class BackstagePassItem < Item
 end
 
-class ConjuredItem < Item
+class ConjuredItem < GeneralItem
+  DEGRADE_RATIO = 2
 end
