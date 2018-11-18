@@ -13,13 +13,28 @@ class Item
 end
 
 class GeneralItem < Item
-  def update_quality
-    @quality -= expired? ? 2 : 1
-    @quality = 0 if @quality < 0
+  MIN_QUALITY = 0
+  MAX_QUALITY = 50
+
+  def update_item
+    update_quality
     @sell_in -= 1
   end
 
   private
+
+  def update_quality
+    @quality -= (expired? ? 2 : 1)
+    correct_value
+  end
+
+  def correct_value
+    if @quality < MIN_QUALITY
+      @quality = MIN_QUALITY
+    elsif @quality > MAX_QUALITY
+      @quality = MAX_QUALITY
+    end
+  end
 
   def expired?
     @sell_in < 0
