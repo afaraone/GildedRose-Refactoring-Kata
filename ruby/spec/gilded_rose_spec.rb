@@ -1,13 +1,10 @@
-require File.join(File.dirname(__FILE__), 'gilded_rose')
+require_relative '../gilded_rose'
 
 describe GildedRose do
 
   describe "#update_quality" do
-    it "does not change the name" do
-      items = [Item.new("foo", 0, 0)]
-      GildedRose.new(items).update_quality()
-      expect(items[0].name).to eq "fixme"
-    end
+    let(:mock_item) { double(:mock_item, name: "foo", sell_in: 0, quality: 0)}
+    let(:mock_items) { [mock_item] }
+    subject { described_class.new(mock_items)}
   end
-
 end
