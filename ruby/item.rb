@@ -65,13 +65,9 @@ class BackstagePassItem < GeneralItem
   end
 
   def change_amount
-    if @sell_in > 9
-      1
-    elsif @sell_in > 4
-      2
-    else
-      3
-    end
+    return 3 if @sell_in.between?(1, 4)
+    return 2 if @sell_in.between?(5, 9)
+    return 1
   end
 end
 
