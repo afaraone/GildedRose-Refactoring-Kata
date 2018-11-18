@@ -136,11 +136,15 @@ describe BackstagePassItem do
 
     context 'sell_by is 1-4' do
       it 'quality increases by 3' do
+        less_than_five.update_item
+        expect(less_than_five.quality).to eq 33
       end
     end
 
     context 'sell_by is <= 0' do
       it 'quality set to 0' do
+        expired.update_item
+        expect(expired.quality).to eq 0
       end
     end
   end

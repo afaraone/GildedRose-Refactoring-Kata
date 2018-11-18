@@ -59,7 +59,20 @@ class SulfurasItem < GeneralItem
 end
 
 class BackstagePassItem < GeneralItem
-  RATIO = 1
+  def update_item
+    super
+    @quality = 0 if expired?
+  end
+
+  def change_amount
+    if @sell_in > 9
+      1
+    elsif @sell_in > 4
+      2
+    else
+      3
+    end
+  end
 end
 
 class ConjuredItem < GeneralItem
