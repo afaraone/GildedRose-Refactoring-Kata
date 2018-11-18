@@ -38,7 +38,7 @@ class GeneralItem < Item
   end
 
   def expired?
-    @sell_in < 0
+    @sell_in < 1
   end
 end
 
@@ -54,7 +54,8 @@ class SulfurasItem < GeneralItem
   end
 end
 
-class BackstagePassItem < Item
+class BackstagePassItem < GeneralItem
+  DEGRADE_RATIO = -1
 end
 
 class ConjuredItem < GeneralItem
