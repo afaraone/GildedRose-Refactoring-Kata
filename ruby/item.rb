@@ -34,11 +34,8 @@ class GeneralItem < Item
   end
 
   def correct_value
-    if @quality < self.class::MIN_QUALITY
-      @quality = self.class::MIN_QUALITY
-    elsif @quality > self.class::MAX_QUALITY
-      @quality = self.class::MAX_QUALITY
-    end
+    @quality = [@quality, MAX_QUALITY].min
+    @quality = [@quality, MIN_QUALITY].max
   end
 
   def expired?
