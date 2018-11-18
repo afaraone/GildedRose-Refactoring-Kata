@@ -13,6 +13,15 @@ class Item
 end
 
 class GeneralItem < Item
+  def update_quality
+    unless @sell_in < 0
+      @sell_in -= 1
+      @quality -= 1
+    else
+      @sell_in -= 1
+      @quality -= 2
+    end
+  end
 end
 
 class AgedBrieItem < Item

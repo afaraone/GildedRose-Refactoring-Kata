@@ -9,3 +9,30 @@ describe Item do
     end
   end
 end
+
+describe GeneralItem do
+  let(:expired) { described_class.new("General Item", -1, 50)}
+  let(:not_expired) { described_class.new("General Item", 2, 50)}
+
+  describe '#update_quality' do
+    context 'when sell_date is not negative' do
+      before { not_expired.update_quality}
+
+      it 'quality reduced by one' do
+        expect(not_expired.quality).to eq 49
+      end
+
+      it 'sell_in reduced by one' do
+        expect(not_expired.sell_in).to eq 1
+      end
+    end
+
+    context 'when sell_date is negative' do
+      before { expired.update_quality}
+
+      it 'quality reduced by two' do
+        expect(expired.quality).to eq 48
+      end
+    end
+  end
+end
