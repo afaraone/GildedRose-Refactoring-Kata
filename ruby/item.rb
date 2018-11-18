@@ -30,10 +30,10 @@ class GeneralItem < Item
   end
 
   def correct_value
-    if @quality < MIN_QUALITY
-      @quality = MIN_QUALITY
-    elsif @quality > MAX_QUALITY
-      @quality = MAX_QUALITY
+    if @quality < self.class::MIN_QUALITY
+      @quality = self.class::MIN_QUALITY
+    elsif @quality > self.class::MAX_QUALITY
+      @quality = self.class::MAX_QUALITY
     end
   end
 
@@ -46,7 +46,12 @@ class AgedBrieItem < GeneralItem
   DEGRADE_RATIO = -1
 end
 
-class SulfurasItem < Item
+class SulfurasItem < GeneralItem
+  DEGRADE_RATIO = 0
+
+  def correct_value
+    nil
+  end
 end
 
 class BackstagePassItem < Item
