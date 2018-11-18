@@ -11,3 +11,18 @@ class Item
     "#{@name}, #{@sell_in}, #{@quality}"
   end
 end
+
+class GeneralItem < Item
+end
+
+class AgedBrieItem < Item
+end
+
+class SulfurasItem < Item
+end
+
+class BackstagePassItem < Item
+end
+
+class ConjuredItem < Item
+end
